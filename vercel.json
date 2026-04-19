@@ -1,14 +1,7 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/tours", "destination": "/tours.html" },
     { "source": "/tour-detail", "destination": "/tour-detail.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    }
   ]
 }
