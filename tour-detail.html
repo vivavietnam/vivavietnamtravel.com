@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Trade Streets of Saigon — Viva Vietnam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lotus-green:#2D5A4A;--golden-harvest:#E8B96A;--terracotta:#D4745A;
+  --river-blue:#7AB8D4;--rice-paper:#F5F0E8;--jade:#5A8A78;
+  --lotus-bud:#D4573A;--dark-earth:#3D2B1A;--linen:#EDE6DA;
+  --deep-gold:#C9A84C;--warm-gray:#6B5E52;--sand:#DDD4C4;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Inter',system-ui,sans-serif;
+  --nav-h:80px;--max-w:1200px;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-pill:999px;
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-sans);background:var(--rice-paper);color:var(--dark-earth);line-height:1.6;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;border:none;background:none;font-family:inherit;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:rgba(245,240,232,0.97);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--sand);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--dark-earth);letter-spacing:0.02em;position:relative;transition:color 0.2s;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--lotus-green);transition:width 0.3s var(--ease-out-expo);}
+.nav-links a:hover{color:var(--lotus-green);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{font-size:13px;font-weight:600;color:var(--rice-paper)!important;background:var(--lotus-green);padding:10px 20px;border-radius:var(--radius-pill);transition:background 0.2s!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--jade)!important;color:white!important;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:6px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--dark-earth);border-radius:2px;}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--rice-paper);padding:24px;border-bottom:1px solid var(--sand);z-index:99;flex-direction:column;gap:20px;}
+.mobile-menu a{font-size:15px;font-weight:500;color:var(--dark-earth);padding:8px 0;border-bottom:1px solid var(--linen);}
+.mobile-menu.open{display:flex;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s var(--ease-out-expo),transform 0.65s var(--ease-out-expo);}
+.reveal.visible{opacity:1;transform:none;}
+.r1{transition-delay:0.08s;}.r2{transition-delay:0.16s;}.r3{transition-delay:0.24s;}
+
+/* BREADCRUMB BAR */
+.crumb-bar{padding:calc(var(--nav-h) + 20px) 0 0;background:var(--rice-paper);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm-gray);flex-wrap:wrap;}
+.breadcrumb a{color:var(--warm-gray);transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--lotus-green);}
+.breadcrumb-sep{color:var(--sand);}
+
+/* HERO GALLERY */
+.gallery{padding:20px 0 0;}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:10px;border-radius:var(--radius-lg);overflow:hidden;}
+.gallery-cell{overflow:hidden;position:relative;cursor:pointer;}
+.gallery-cell:first-child{grid-row:span 2;}
+.gallery-cell img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s var(--ease-out-expo);}
+.gallery-cell:hover img{transform:scale(1.06);}
+.gallery-more-btn{position:absolute;bottom:14px;right:14px;font-size:12px;font-weight:600;color:var(--dark-earth);background:rgba(255,255,255,0.92);padding:7px 16px;border-radius:var(--radius-pill);backdrop-filter:blur(4px);transition:background 0.2s;}
+.gallery-more-btn:hover{background:white;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(30,20,10,0.92);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;}
+.lightbox.open{display:flex;}
+.lightbox-img{max-width:90vw;max-height:85vh;border-radius:var(--radius-md);object-fit:contain;}
+.lightbox-close{position:absolute;top:20px;right:24px;font-size:28px;color:white;cursor:pointer;line-height:1;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:white;cursor:pointer;background:rgba(255,255,255,0.12);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 0.2s;}
+.lightbox-nav:hover{background:rgba(255,255,255,0.25);}
+.lightbox-prev{left:16px;}
+.lightbox-next{right:16px;}
+
+/* MAIN LAYOUT */
+.detail-layout{display:grid;grid-template-columns:1fr 360px;gap:56px;padding:40px 0 96px;align-items:start;}
+
+/* LEFT CONTENT */
+.detail-header{margin-bottom:32px;}
+.detail-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;border-radius:var(--radius-pill);}
+.tag-green{color:var(--jade);background:rgba(90,138,120,0.12);}
+.tag-gold{color:var(--deep-gold);background:rgba(201,168,76,0.12);}
+.tag-terra{color:var(--lotus-bud);background:rgba(212,87,58,0.12);}
+.tag-blue{color:#4a8fa8;background:rgba(122,184,212,0.15);}
+.detail-title{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--dark-earth);line-height:1.15;margin-bottom:16px;}
+.detail-meta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);}
+.meta-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--warm-gray);}
+.meta-item strong{color:var(--dark-earth);font-weight:600;}
+.meta-item svg{color:var(--jade);flex-shrink:0;}
+.rating-row{display:flex;align-items:center;gap:8px;}
+.rating-stars{color:var(--golden-harvest);font-size:14px;letter-spacing:1px;}
+.rating-num{font-size:14px;font-weight:700;color:var(--dark-earth);}
+.rating-count{font-size:12px;color:var(--warm-gray);}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--sand);margin:32px 0 28px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{font-size:13px;font-weight:500;color:var(--warm-gray);padding:10px 20px;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color 0.2s,border-color 0.2s;}
+.tab-btn.active{color:var(--lotus-green);border-bottom-color:var(--lotus-green);font-weight:600;}
+.tab-btn:hover{color:var(--lotus-green);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* DESCRIPTION */
+.description p{font-size:15px;color:var(--warm-gray);line-height:1.85;margin-bottom:18px;}
+.description p strong{color:var(--dark-earth);}
+.highlight-box{background:var(--linen);border-left:3px solid var(--jade);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:20px 24px;margin:24px 0;}
+.highlight-box-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--jade);margin-bottom:12px;}
+.highlight-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.highlight-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--dark-earth);line-height:1.5;}
+.highlight-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--golden-harvest);flex-shrink:0;margin-top:7px;}
+
+/* ITINERARY */
+.itinerary{display:flex;flex-direction:column;gap:0;}
+.itinerary-item{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative;}
+.itinerary-item:not(:last-child) .itin-line::after{content:'';position:absolute;left:39px;top:40px;bottom:0;width:1px;background:var(--sand);}
+.itin-time{padding:16px 0 16px;text-align:center;position:relative;}
+.itin-time-text{font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--jade);}
+.itin-dot{width:12px;height:12px;border-radius:50%;background:var(--lotus-green);border:2px solid var(--rice-paper);box-shadow:0 0 0 2px var(--lotus-green);margin:6px auto 0;}
+.itin-line{position:relative;}
+.itin-content{padding:16px 0 16px 20px;}
+.itin-title{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--dark-earth);margin-bottom:6px;}
+.itin-desc{font-size:13px;color:var(--warm-gray);line-height:1.65;}
+.itin-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--terracotta);background:rgba(212,116,90,0.1);padding:3px 9px;border-radius:var(--radius-pill);margin-top:6px;}
+
+/* INCLUDES */
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.include-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:var(--radius-md);font-size:13px;color:var(--dark-earth);line-height:1.4;}
+.include-item.yes{background:rgba(90,138,120,0.08);}
+.include-item.no{background:rgba(212,87,58,0.06);color:var(--warm-gray);}
+.include-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+
+/* REVIEWS */
+.reviews-summary{display:flex;gap:32px;align-items:center;padding:24px;background:var(--linen);border-radius:var(--radius-lg);margin-bottom:28px;}
+.reviews-big-num{font-family:var(--font-serif);font-size:56px;font-weight:700;color:var(--lotus-green);line-height:1;}
+.reviews-stars{color:var(--golden-harvest);font-size:20px;letter-spacing:2px;margin:4px 0;}
+.reviews-total{font-size:13px;color:var(--warm-gray);}
+.rating-bars{flex:1;}
+.rating-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.rating-bar-label{font-size:11px;color:var(--warm-gray);width:10px;text-align:right;}
+.rating-bar-track{flex:1;height:5px;background:var(--sand);border-radius:3px;overflow:hidden;}
+.rating-bar-fill{height:100%;background:var(--golden-harvest);border-radius:3px;}
+.rating-bar-count{font-size:11px;color:var(--warm-gray);width:28px;}
+.review-card{padding:24px 0;border-bottom:1px solid var(--sand);}
+.review-card:last-child{border-bottom:none;}
+.review-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:12px;}
+.review-author{display:flex;align-items:center;gap:12px;}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--linen);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-weight:700;color:var(--jade);font-size:13px;flex-shrink:0;}
+.review-name{font-size:14px;font-weight:600;color:var(--dark-earth);}
+.review-meta{font-size:11px;color:var(--warm-gray);margin-top:2px;}
+.review-stars{color:var(--golden-harvest);font-size:12px;}
+.review-date{font-size:11px;color:var(--warm-gray);white-space:nowrap;}
+.review-text{font-size:14px;color:var(--warm-gray);line-height:1.75;font-style:italic;}
+.review-tour{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--jade);margin-top:8px;}
+
+/* STICKY BOOKING CARD */
+.booking-card{background:white;border-radius:var(--radius-lg);border:1px solid var(--sand);overflow:hidden;position:sticky;top:calc(var(--nav-h) + 24px);box-shadow:0 4px 32px rgba(61,43,26,0.08);}
+.booking-card-header{background:var(--lotus-green);padding:22px 24px;}
+.booking-price-from{font-size:11px;color:rgba(255,255,255,0.6);font-weight:500;margin-bottom:4px;}
+.booking-price{font-family:var(--font-serif);font-size:36px;font-weight:700;color:white;line-height:1;}
+.booking-price span{font-family:var(--font-sans);font-size:13px;font-weight:400;color:rgba(255,255,255,0.65);}
+.booking-card-stars{display:flex;align-items:center;gap:6px;margin-top:8px;}
+.booking-card-stars .s{color:var(--golden-harvest);font-size:12px;}
+.booking-card-stars .n{font-size:12px;color:rgba(255,255,255,0.8);}
+.booking-body{padding:22px 24px;}
+.booking-form-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:6px;display:block;}
+.booking-input{width:100%;font-family:var(--font-sans);font-size:13px;color:var(--dark-earth);background:var(--rice-paper);border:1.5px solid var(--sand);border-radius:var(--radius-md);padding:10px 13px;outline:none;transition:border-color 0.2s;margin-bottom:12px;}
+.booking-input:focus{border-color:var(--lotus-green);}
+.booking-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.booking-row .booking-input{margin-bottom:0;}
+.booking-divider{height:1px;background:var(--linen);margin:16px 0;}
+.booking-breakdown{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.booking-line{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--warm-gray);}
+.booking-line strong{color:var(--dark-earth);}
+.booking-total{display:flex;justify-content:space-between;padding-top:12px;border-top:1.5px solid var(--sand);font-size:15px;font-weight:600;color:var(--dark-earth);}
+.booking-total .total-num{font-family:var(--font-serif);font-size:22px;color:var(--lotus-green);}
+.btn-book{width:100%;font-size:14px;font-weight:700;color:var(--dark-earth);background:var(--golden-harvest);padding:15px;border-radius:var(--radius-pill);margin-top:4px;transition:background 0.2s,transform 0.2s;letter-spacing:0.02em;}
+.btn-book:hover{background:var(--deep-gold);transform:translateY(-1px);}
+.btn-inquire{width:100%;font-size:13px;font-weight:600;color:var(--lotus-green);background:transparent;border:1.5px solid var(--lotus-green);padding:12px;border-radius:var(--radius-pill);margin-top:10px;transition:all 0.2s;}
+.btn-inquire:hover{background:var(--lotus-green);color:white;}
+.booking-note{font-size:11px;color:var(--warm-gray);text-align:center;margin-top:10px;line-height:1.5;}
+.booking-features{display:flex;flex-direction:column;gap:8px;padding:18px 24px;background:var(--rice-paper);border-top:1px solid var(--sand);}
+.booking-feature{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm-gray);}
+.booking-feature-dot{width:5px;height:5px;border-radius:50%;background:var(--jade);flex-shrink:0;}
+.share-row{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--sand);}
+.share-label{font-size:12px;color:var(--warm-gray);}
+.share-btns{display:flex;gap:8px;}
+.share-btn{width:30px;height:30px;border-radius:50%;background:var(--linen);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--warm-gray);transition:background 0.2s;}
+.share-btn:hover{background:var(--lotus-green);color:white;}
+
+/* GUIDE CARD */
+.guide-card{background:white;border-radius:var(--radius-lg);border:1px solid var(--sand);padding:24px;margin-top:24px;}
+.guide-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.guide-avatar{width:56px;height:56px;border-radius:50%;background:var(--linen);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--jade);border:2px solid var(--sand);}
+.guide-name{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--dark-earth);}
+.guide-title{font-size:12px;color:var(--warm-gray);margin-top:2px;}
+.guide-bio{font-size:13px;color:var(--warm-gray);line-height:1.7;}
+.guide-stats{display:flex;gap:20px;margin-top:14px;padding-top:14px;border-top:1px solid var(--linen);}
+.guide-stat-num{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--lotus-green);}
+.guide-stat-label{font-size:11px;color:var(--warm-gray);}
+
+/* RELATED */
+.related{padding:0 0 80px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px;}
+.tour-card{background:white;border-radius:var(--radius-lg);overflow:hidden;border:1px solid transparent;transition:transform 0.3s var(--ease-out-expo),box-shadow 0.3s;cursor:pointer;}
+.tour-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(61,43,26,0.1);border-color:var(--sand);}
+.tour-card-img{height:200px;overflow:hidden;position:relative;}
+.tour-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out-expo);}
+.tour-card:hover .tour-card-img img{transform:scale(1.07);}
+.card-city-badge{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:white;background:rgba(45,90,74,0.88);padding:4px 10px;border-radius:var(--radius-pill);}
+.tour-card-body{padding:16px 18px;}
+.card-title{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--dark-earth);line-height:1.3;margin-bottom:6px;}
+.card-price{font-family:var(--font-serif);font-size:17px;font-weight:700;color:var(--lotus-green);}
+.card-price span{font-family:var(--font-sans);font-size:11px;font-weight:400;color:var(--warm-gray);}
+
+/* FOOTER */
+.footer{background:#1E3D30;color:rgba(255,255,255,0.65);padding:56px 0 28px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:28px;}
+.footer-brand-text{font-size:13px;line-height:1.7;margin:14px 0 20px;color:rgba(255,255,255,0.5);}
+.footer-socials{display:flex;gap:8px;}
+.footer-social{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;transition:background 0.2s;}
+.footer-social:hover{background:var(--jade);}
+.footer-col-title{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:white;margin-bottom:16px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.5);transition:color 0.2s;}
+.footer-links a:hover{color:var(--golden-harvest);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.3);}
+.footer-legal{display:flex;gap:18px;}
+.footer-legal a{font-size:11px;color:rgba(255,255,255,0.3);transition:color 0.2s;}
+.footer-legal a:hover{color:white;}
+.btt{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--lotus-green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px;z-index:90;opacity:0;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s;pointer-events:none;box-shadow:0 4px 14px rgba(45,90,74,0.28);}
+.btt.visible{opacity:1;transform:none;pointer-events:auto;}
+
+@media(max-width:1024px){
+  .detail-layout{grid-template-columns:1fr;gap:0;}
+  .booking-card{position:static;margin-top:40px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px;}
+  .gallery-cell:first-child{grid-row:span 1;grid-column:span 2;}
+  .related-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+}
+@media(max-width:768px){
+  :root{--nav-h:64px;}
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;}
+  .gallery-grid{grid-template-rows:220px 180px;grid-template-columns:1fr 1fr;}
+  .includes-grid{grid-template-columns:1fr;}
+  .reviews-summary{flex-direction:column;gap:16px;}
+  .related-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .booking-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" style="display:flex;align-items:center;">
+        <img src="logo.png" alt="Viva Vietnam" style="width:48px;height:48px;object-fit:contain;"/>
+      </a>
+      <ul class="nav-links">
+        <li><a href="tours.html" class="active">Tours</a></li>
+        <li><a href="tours.html#workshops">Workshops</a></li>
+        <li><a href="index.html#cities">Cities</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#inquiry" class="nav-cta">Plan My Trip</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="tours.html">Tours</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#blog">Blog</a>
+  <a href="index.html#inquiry" style="color:var(--lotus-green);font-weight:700;">Plan My Trip →</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lbClose">×</span>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+  <img class="lightbox-img" id="lbImg" src="" alt=""/>
+  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="crumb-bar">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">/</span>
+      <a href="tours.html">Tours</a><span class="breadcrumb-sep">/</span>
+      <a href="tours.html">Ho Chi Minh City</a><span class="breadcrumb-sep">/</span>
+      <span style="color:var(--dark-earth);">5 Trade Streets of Saigon</span>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-cell" data-idx="0">
+        <img src="https://images.unsplash.com/photo-1555708982-8645ec9ce3cc?w=900&q=85&auto=format" alt="Saigon street food"/>
+      </div>
+      <div class="gallery-cell" data-idx="1">
+        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80&auto=format" alt="Saigon streets"/>
+      </div>
+      <div class="gallery-cell" data-idx="2">
+        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80&auto=format" alt="Local market"/>
+      </div>
+      <div class="gallery-cell" data-idx="3">
+        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80&auto=format" alt="Vietnamese food"/>
+      </div>
+      <div class="gallery-cell" data-idx="4" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80&auto=format" alt="Street scene"/>
+        <div class="gallery-more-btn" id="showMoreBtn">+ 8 photos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL LAYOUT -->
+<div class="container">
+  <div class="detail-layout">
+
+    <!-- LEFT: CONTENT -->
+    <div>
+      <!-- Header -->
+      <div class="detail-header reveal">
+        <div class="detail-tags">
+          <span class="tag tag-green">Foodie</span>
+          <span class="tag tag-gold">Bestseller</span>
+          <span class="tag" style="color:var(--warm-gray);background:var(--linen);">Ho Chi Minh City</span>
+        </div>
+        <h1 class="detail-title">5 Trade Streets of Saigon — A Night with the Locals</h1>
+        <div class="rating-row">
+          <span class="rating-stars">★★★★★</span>
+          <span class="rating-num">4.9</span>
+          <span class="rating-count">(128 reviews)</span>
+        </div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="detail-meta-row reveal">
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.5V8l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <strong>3 hours</strong>
+        </div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a3 3 0 100 6 3 3 0 000-6zm-5 11c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <strong>Max 8 guests</strong>
+        </div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2.5C5.52 2.5 3.5 4.52 3.5 7c0 3.5 4.5 8 4.5 8s4.5-4.5 4.5-8c0-2.48-2.02-4.5-4.5-4.5z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="7" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          <strong>District 1</strong>, Ho Chi Minh City
+        </div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 7h12M5 2v3M11 2v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Daily departures
+        </div>
+        <div class="meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l3-3 3 3 6-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          English & Vietnamese
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs reveal">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="itinerary">Itinerary</button>
+        <button class="tab-btn" data-tab="includes">Includes</button>
+        <button class="tab-btn" data-tab="reviews">Reviews (128)</button>
+        <button class="tab-btn" data-tab="faq">FAQ</button>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div class="tab-panel active reveal" id="tab-overview">
+        <div class="description">
+          <p>Forget the tourist traps. <strong>The 5 Trade Streets of Saigon</strong> is your chance to eat the way the locals do — in alleyways lit by bare bulbs, at plastic-stool restaurants that haven't changed in 40 years, guided by someone who grew up eating here.</p>
+          <p>We start as the sun drops, when the city shifts gears and the street-food vendors wheel their carts into position. Over three hours, you'll taste your way through five of Saigon's most celebrated dishes — from the smoky intensity of bún bò Huế to the delicate sweetness of chè ba màu — at the spots our guides have been eating at since childhood.</p>
+          <p>This is a walking tour. The pace is relaxed and social. You'll meet the vendors, hear the stories behind each dish, and leave with a full stomach and a genuine feel for how Saigon actually tastes.</p>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-box-title">What makes this special</div>
+          <ul class="highlight-list">
+            <li>All 5 food stops chosen by guides who eat here weekly — not from a tourist list</li>
+            <li>Small group of maximum 8 means personal attention and no crowds</li>
+            <li>You'll try 5 distinct dishes including one "secret" item not on our published menu</li>
+            <li>Each vendor stop includes a short story about the dish's history in Vietnamese cuisine</li>
+            <li>Ends at a rooftop beer bar with panoramic District 1 views</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ITINERARY -->
+      <div class="tab-panel reveal" id="tab-itinerary">
+        <div class="itinerary">
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">6:00 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Meet at Bến Thành Market</div>
+                <div class="itin-desc">Meet your guide at the south entrance of Bến Thành Market. A quick intro to the evening's route and what to expect. We set off just as the night market opens.</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">6:20 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Stop 1 — Bún Bò Huế Alley</div>
+                <div class="itin-desc">A family-run stall operating since 1978. Their bún bò Huế is made from a 12-hour broth and served with a generous side of fresh herbs. This is the real thing.</div>
+                <div class="itin-badge">🍜 Taste Stop</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">6:55 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Walk through Hẻm 76 — The Hidden Alley</div>
+                <div class="itin-desc">A narrow laneway locals call "the food street that tourists haven't found." Your guide will point out the architectural mix of French colonial and modern Vietnamese design as we walk through.</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">7:20 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Stop 2 — Bánh Xèo at Mrs. Thủy's</div>
+                <div class="itin-desc">Mrs. Thủy has been flipping her sizzling Vietnamese crêpes (bánh xèo) here for 22 years. You'll watch her work, then wrap yours in fresh lettuce and herbs the way it's meant to be eaten.</div>
+                <div class="itin-badge">🥞 Taste Stop</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">7:50 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Stops 3 & 4 — Sweet Side of Saigon</div>
+                <div class="itin-desc">A Vietnamese sandwich (bánh mì) from the cart that's been on this corner for 35 years, followed by a chè ba màu dessert — the three-colour sweet bean pudding that has no equal anywhere else.</div>
+                <div class="itin-badge">🧋 Taste Stop</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">8:30 PM</div>
+              <div class="itin-dot"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Stop 5 — The Secret Spot 🤫</div>
+                <div class="itin-desc">We don't reveal this one on purpose. Every guest has a different reaction. This is the moment most people say they'll remember longest.</div>
+              </div>
+            </div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itin-time">
+              <div class="itin-time-text">9:00 PM</div>
+              <div class="itin-dot" style="background:var(--golden-harvest);box-shadow:0 0 0 2px var(--golden-harvest);"></div>
+            </div>
+            <div class="itin-line">
+              <div class="itin-content">
+                <div class="itin-title">Rooftop Finale — Bia Hơi with a View</div>
+                <div class="itin-desc">We end on a rooftop bar with views across District 1. First round of bia hơi (draft beer) is on us. This is where the group usually stays long after the tour officially ends.</div>
+                <div class="itin-badge" style="color:var(--jade);background:rgba(90,138,120,0.1);">🍺 Tour Ends Here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INCLUDES -->
+      <div class="tab-panel reveal" id="tab-includes">
+        <div style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--jade);margin-bottom:12px;">What's included</div>
+          <div class="includes-grid">
+            <div class="include-item yes"><span class="include-icon">✓</span>All food tastings (5 stops)</div>
+            <div class="include-item yes"><span class="include-icon">✓</span>First round of bia hơi / soft drink</div>
+            <div class="include-item yes"><span class="include-icon">✓</span>Local expert guide (English)</div>
+            <div class="include-item yes"><span class="include-icon">✓</span>Small group (max 8 guests)</div>
+            <div class="include-item yes"><span class="include-icon">✓</span>Hotel pickup in District 1</div>
+            <div class="include-item yes"><span class="include-icon">✓</span>Digital recipe guide sent after tour</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--lotus-bud);margin-bottom:12px;">Not included</div>
+          <div class="includes-grid">
+            <div class="include-item no"><span class="include-icon">✗</span>Additional drinks beyond first round</div>
+            <div class="include-item no"><span class="include-icon">✗</span>Gratuities for guide (optional)</div>
+            <div class="include-item no"><span class="include-icon">✗</span>Transport outside District 1</div>
+            <div class="include-item no"><span class="include-icon">✗</span>Personal purchases at market</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:18px;background:rgba(122,184,212,0.1);border-radius:var(--radius-md);border-left:3px solid var(--river-blue);">
+          <div style="font-size:12px;font-weight:700;color:#3a7a9a;margin-bottom:6px;">Good to know</div>
+          <div style="font-size:13px;color:var(--warm-gray);line-height:1.7;">This tour involves approximately 2.5km of walking. Comfortable walking shoes are recommended. Vegetarian options are available — please mention at time of booking. The tour runs rain or shine (Saigon street food is best eaten in a light rain anyway, locals will tell you).</div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="tab-panel reveal" id="tab-reviews">
+        <div class="reviews-summary">
+          <div style="text-align:center;">
+            <div class="reviews-big-num">4.9</div>
+            <div class="reviews-stars">★★★★★</div>
+            <div class="reviews-total">128 reviews</div>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:91%"></div></div><span class="rating-bar-count">116</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:7%"></div></div><span class="rating-bar-count">9</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div><span class="rating-bar-count">3</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div><span class="rating-bar-count">0</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div><span class="rating-bar-count">0</span></div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">SR</div>
+              <div><div class="review-name">Sarah R.</div><div class="review-meta">London, UK · April 2026</div></div>
+            </div>
+            <div style="text-align:right;"><div class="review-stars">★★★★★</div><div class="review-date">Apr 12, 2026</div></div>
+          </div>
+          <p class="review-text">"Our guide Minh knew every vendor by name — and more importantly, what to order. The bánh xèo at Mrs. Thủy's was the best thing I ate in all of Vietnam, full stop. The secret stop at the end had our whole group laughing and amazed. Would do this tour every night if I could."</p>
+          <div class="review-tour">✓ Verified booking — 5 Trade Streets of Saigon</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">JP</div>
+              <div><div class="review-name">James P.</div><div class="review-meta">Sydney, Australia · March 2026</div></div>
+            </div>
+            <div style="text-align:right;"><div class="review-stars">★★★★★</div><div class="review-date">Mar 28, 2026</div></div>
+          </div>
+          <p class="review-text">"I've done food tours in Bangkok, Tokyo, and Rome. This was the best. Not because of the food alone — though it was incredible — but because of the genuine connection you get with the people and places. Minh told us the story of Mrs. Thủy's family as we ate and I nearly cried."</p>
+          <div class="review-tour">✓ Verified booking — 5 Trade Streets of Saigon</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">TN</div>
+              <div><div class="review-name">Trang N.</div><div class="review-meta">San Jose, USA · March 2026</div></div>
+            </div>
+            <div style="text-align:right;"><div class="review-stars">★★★★★</div><div class="review-date">Mar 15, 2026</div></div>
+          </div>
+          <p class="review-text">"I'm Vietnamese-American visiting my family's hometown for the first time. I wanted to understand the city beyond what my parents had told me. This tour gave me that. The chè ba màu — my grandmother used to make that. I held it together, just barely."</p>
+          <div class="review-tour">✓ Verified booking — 5 Trade Streets of Saigon</div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="tab-panel reveal" id="tab-faq">
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="faq-item" style="border-bottom:1px solid var(--sand);padding:18px 0;">
+            <div class="faq-q" style="font-size:15px;font-weight:600;color:var(--dark-earth);cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+              What should I wear?
+              <span class="faq-arrow" style="font-size:18px;color:var(--jade);transition:transform 0.2s;">+</span>
+            </div>
+            <div class="faq-a" style="display:none;font-size:13px;color:var(--warm-gray);line-height:1.75;padding-top:10px;">Comfortable walking shoes are essential — you'll cover about 2.5km on mixed surfaces. Light, breathable clothing is best. Bring a light rain jacket during the wet season (May–November).</div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid var(--sand);padding:18px 0;">
+            <div class="faq-q" style="font-size:15px;font-weight:600;color:var(--dark-earth);cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+              Is this tour suitable for vegetarians?
+              <span class="faq-arrow" style="font-size:18px;color:var(--jade);transition:transform 0.2s;">+</span>
+            </div>
+            <div class="faq-a" style="display:none;font-size:13px;color:var(--warm-gray);line-height:1.75;padding-top:10px;">Yes! All 5 stops have vegetarian alternatives. Please mention your dietary requirements when booking and we'll let your guide know in advance so everything is arranged.</div>
+          </div>
+          <div class="faq-item" style="border-bottom:1px solid var(--sand);padding:18px 0;">
+            <div class="faq-q" style="font-size:15px;font-weight:600;color:var(--dark-earth);cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+              How does payment work?
+              <span class="faq-arrow" style="font-size:18px;color:var(--jade);transition:transform 0.2s;">+</span>
+            </div>
+            <div class="faq-a" style="display:none;font-size:13px;color:var(--warm-gray);line-height:1.75;padding-top:10px;">You submit an inquiry here, our team confirms availability and sends you a booking confirmation. Full payment is collected at that time via PayPal (international) or OnePay (Vietnamese bank cards and e-wallets). All transactions are secure.</div>
+          </div>
+          <div class="faq-item" style="padding:18px 0;">
+            <div class="faq-q" style="font-size:15px;font-weight:600;color:var(--dark-earth);cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+              What is the cancellation policy?
+              <span class="faq-arrow" style="font-size:18px;color:var(--jade);transition:transform 0.2s;">+</span>
+            </div>
+            <div class="faq-a" style="display:none;font-size:13px;color:var(--warm-gray);line-height:1.75;padding-top:10px;">Free cancellation up to 48 hours before the tour starts. Cancellations within 48 hours are non-refundable, but we're happy to reschedule if you contact us in advance.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /left content -->
+
+    <!-- RIGHT: BOOKING CARD -->
+    <div class="reveal r2">
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div class="booking-price-from">From</div>
+          <div class="booking-price">$45 <span>/ person</span></div>
+          <div class="booking-card-stars">
+            <span class="s">★★★★★</span>
+            <span class="n">4.9 · 128 reviews</span>
+          </div>
+        </div>
+        <div class="booking-body">
+          <label class="booking-form-label">Select Date</label>
+          <input type="date" class="booking-input" id="tourDate"/>
+          <div class="booking-row">
+            <div>
+              <label class="booking-form-label">Adults</label>
+              <select class="booking-input" id="adultCount">
+                <option value="1">1 adult</option>
+                <option value="2" selected>2 adults</option>
+                <option value="3">3 adults</option>
+                <option value="4">4 adults</option>
+                <option value="5">5 adults</option>
+                <option value="6">6 adults</option>
+                <option value="7">7 adults</option>
+                <option value="8">8 adults</option>
+              </select>
+            </div>
+            <div>
+              <label class="booking-form-label">Children</label>
+              <select class="booking-input" id="childCount">
+                <option value="0" selected>0 children</option>
+                <option value="1">1 child</option>
+                <option value="2">2 children</option>
+                <option value="3">3 children</option>
+              </select>
+            </div>
+          </div>
+          <div class="booking-divider"></div>
+          <div class="booking-breakdown">
+            <div class="booking-line"><span id="adultsLine">2 adults × $45</span><span id="adultsTotal">$90</span></div>
+            <div class="booking-line"><span>Service fee</span><span>$0</span></div>
+          </div>
+          <div class="booking-total">
+            <span>Total</span>
+            <span class="total-num" id="grandTotal">$90</span>
+          </div>
+          <button class="btn-book" id="bookBtn">Request to Book</button>
+          <button class="btn-inquire">Ask a Question First</button>
+          <div class="booking-note">🔒 No charge until confirmed by our team</div>
+        </div>
+        <div class="booking-features">
+          <div class="booking-feature"><div class="booking-feature-dot"></div>Response within 24 hours</div>
+          <div class="booking-feature"><div class="booking-feature-dot"></div>Free cancellation 48hrs prior</div>
+          <div class="booking-feature"><div class="booking-feature-dot"></div>PayPal & OnePay accepted</div>
+        </div>
+        <div class="share-row">
+          <span class="share-label">Share this tour</span>
+          <div class="share-btns">
+            <a class="share-btn" href="#">fb</a>
+            <a class="share-btn" href="#">wa</a>
+            <a class="share-btn" href="#">✉</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUIDE CARD -->
+      <div class="guide-card reveal r3">
+        <div class="guide-header">
+          <div class="guide-avatar">MH</div>
+          <div>
+            <div class="guide-name">Minh Hùng</div>
+            <div class="guide-title">Lead Food Guide · Ho Chi Minh City</div>
+          </div>
+        </div>
+        <p class="guide-bio">Born and raised in District 1, Minh has been guiding food tours for 8 years. He knows every vendor in the neighbourhood by name, and most of them have fed him since childhood. His favourite dish is still his mother's bún bò Huế.</p>
+        <div class="guide-stats">
+          <div><div class="guide-stat-num">8 yrs</div><div class="guide-stat-label">Experience</div></div>
+          <div><div class="guide-stat-num">4.98★</div><div class="guide-stat-label">Rating</div></div>
+          <div><div class="guide-stat-num">640+</div><div class="guide-stat-label">Tours Led</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /detail-layout -->
+</div><!-- /container -->
+
+<!-- RELATED TOURS -->
+<section class="related">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;">You might also love</div>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(22px,2.5vw,32px);font-weight:700;color:var(--dark-earth);">More <em style="font-style:italic;color:var(--jade);">Saigon experiences</em></h2>
+      </div>
+      <a href="tours.html" style="font-size:13px;font-weight:600;color:var(--lotus-green);border-bottom:1.5px solid var(--lotus-green);padding-bottom:2px;">View all tours →</a>
+    </div>
+    <div class="related-grid">
+      <a href="tour-detail.html" class="tour-card reveal">
+        <div class="tour-card-img">
+          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80&auto=format" alt="Café tour" loading="lazy"/>
+          <div class="card-city-badge">Ho Chi Minh City</div>
+        </div>
+        <div class="tour-card-body">
+          <div style="display:flex;gap:6px;margin-bottom:8px;"><span class="tag tag-blue">Café Tour</span></div>
+          <div class="card-title">Saigon Hidden Café Hop — 5 Secret Spots</div>
+          <div class="card-price">$32 <span>/ person</span></div>
+        </div>
+      </a>
+      <a href="tour-detail.html" class="tour-card reveal r1">
+        <div class="tour-card-img">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80&auto=format" alt="Cooking class" loading="lazy"/>
+          <div class="card-city-badge">Ho Chi Minh City</div>
+        </div>
+        <div class="tour-card-body">
+          <div style="display:flex;gap:6px;margin-bottom:8px;"><span class="tag tag-green">Workshop</span></div>
+          <div class="card-title">Saigon Street Food Cooking Class</div>
+          <div class="card-price">$42 <span>/ person</span></div>
+        </div>
+      </a>
+      <a href="tour-detail.html" class="tour-card reveal r2">
+        <div class="tour-card-img">
+          <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80&auto=format" alt="Motorbike tour" loading="lazy"/>
+          <div class="card-city-badge">Ho Chi Minh City</div>
+        </div>
+        <div class="tour-card-body">
+          <div style="display:flex;gap:6px;margin-bottom:8px;"><span class="tag tag-gold">City Tour</span></div>
+          <div class="card-title">Saigon by Motorbike — The City After Dark</div>
+          <div class="card-price">$58 <span>/ person</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="logo.png" alt="Viva Vietnam" style="width:52px;height:52px;object-fit:contain;filter:brightness(0) invert(1);"/>
+        <p class="footer-brand-text">Creating authentic travel experiences that connect visitors with Vietnam's people, flavors, and traditions. Since 2015.</p>
+        <div class="footer-socials"><a class="footer-social" href="#">ig</a><a class="footer-social" href="#">fb</a><a class="footer-social" href="#">ta</a><a class="footer-social" href="#">yt</a></div>
+      </div>
+      <div><div class="footer-col-title">Explore</div><ul class="footer-links"><li><a href="tours.html">All Tours</a></li><li><a href="#">Workshops</a></li><li><a href="#">City Guides</a></li><li><a href="#">Custom Trips</a></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="#">About Us</a></li><li><a href="#">Our Guides</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div><div class="footer-col-title">Support</div><ul class="footer-links"><li><a href="#">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Cancellation Policy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Viva Vietnam. All rights reserved.</div>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<a href="#" class="btt" id="btt">↑</a>
+
+<script>
+// NAV + BTT
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
+document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('open'); });
+
+// REVEAL
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// TABS
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const ans = item.querySelector('.faq-a');
+    const arrow = item.querySelector('.faq-arrow');
+    const isOpen = ans.style.display === 'block';
+    ans.style.display = isOpen ? 'none' : 'block';
+    arrow.textContent = isOpen ? '+' : '−';
+    arrow.style.transform = isOpen ? '' : 'rotate(45deg)';
+  });
+});
+
+// BOOKING CALCULATOR
+const adultSel = document.getElementById('adultCount');
+const childSel = document.getElementById('childCount');
+const ADULT_PRICE = 45;
+const CHILD_PRICE = 25;
+function updatePrice() {
+  const adults = parseInt(adultSel.value);
+  const children = parseInt(childSel.value);
+  const total = (adults * ADULT_PRICE) + (children * CHILD_PRICE);
+  document.getElementById('adultsLine').textContent = `${adults} adult${adults>1?'s':''} × $${ADULT_PRICE}${children > 0 ? ` + ${children} child${children>1?'ren':''} × $${CHILD_PRICE}` : ''}`;
+  document.getElementById('adultsTotal').textContent = `$${total}`;
+  document.getElementById('grandTotal').textContent = `$${total}`;
+}
+adultSel.addEventListener('change', updatePrice);
+childSel.addEventListener('change', updatePrice);
+updatePrice();
+
+// Book button
+document.getElementById('bookBtn').addEventListener('click', function() {
+  const date = document.getElementById('tourDate').value;
+  if(!date) { document.getElementById('tourDate').style.borderColor = 'var(--lotus-bud)'; document.getElementById('tourDate').focus(); return; }
+  this.textContent = '✓ Request Sent! We\'ll confirm within 24 hours.';
+  this.style.background = 'var(--jade)';
+  this.disabled = true;
+});
+
+// Set min date
+const today = new Date();
+document.getElementById('tourDate').min = today.toISOString().split('T')[0];
+
+// GALLERY LIGHTBOX
+const galleryImgs = Array.from(document.querySelectorAll('.gallery-cell img')).map(img => img.src);
+let lbIdx = 0;
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+function openLb(idx) { lbIdx = idx; lbImg.src = galleryImgs[idx]; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeLb() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('.gallery-cell').forEach(cell => { cell.addEventListener('click', () => openLb(parseInt(cell.dataset.idx))); });
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => openLb((lbIdx - 1 + galleryImgs.length) % galleryImgs.length));
+document.getElementById('lbNext').addEventListener('click', () => openLb((lbIdx + 1) % galleryImgs.length));
+lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => { if(!lightbox.classList.contains('open')) return; if(e.key === 'Escape') closeLb(); if(e.key === 'ArrowLeft') openLb((lbIdx-1+galleryImgs.length)%galleryImgs.length); if(e.key === 'ArrowRight') openLb((lbIdx+1)%galleryImgs.length); });
+document.getElementById('showMoreBtn').addEventListener('click', e => { e.stopPropagation(); openLb(4); });
+</script>
+</body>
+</html>
