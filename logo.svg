@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <polygon points="200,40 320,175 80,175" fill="#E8B96A" stroke="#2D5A4A" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M80,175 Q115,120 150,175Z" fill="#D4845A" stroke="none"/>
+  <line x1="195" y1="78" x2="183" y2="122" stroke="#2D5A4A" stroke-width="2.5"/>
+  <line x1="183" y1="122" x2="174" y2="105" stroke="#2D5A4A" stroke-width="2"/>
+  <line x1="183" y1="122" x2="191" y2="100" stroke="#2D5A4A" stroke-width="2"/>
+  <line x1="205" y1="78" x2="218" y2="124" stroke="#2D5A4A" stroke-width="2.5"/>
+  <line x1="218" y1="124" x2="208" y2="106" stroke="#2D5A4A" stroke-width="2"/>
+  <line x1="218" y1="124" x2="228" y2="110" stroke="#2D5A4A" stroke-width="2"/>
+  <ellipse cx="200" cy="188" rx="16" ry="26" fill="#2D5A4A" transform="rotate(-20 200 188)"/>
+  <ellipse cx="200" cy="188" rx="16" ry="26" fill="#2D5A4A" transform="rotate(20 200 188)"/>
+  <ellipse cx="200" cy="188" rx="16" ry="26" fill="#2D5A4A"/>
+  <ellipse cx="172" cy="195" rx="12" ry="20" fill="#5A8A78" transform="rotate(-35 172 195)"/>
+  <ellipse cx="228" cy="195" rx="12" ry="20" fill="#5A8A78" transform="rotate(35 228 195)"/>
+  <ellipse cx="148" cy="200" rx="10" ry="16" fill="#7AACA0" transform="rotate(-50 148 200)"/>
+  <ellipse cx="252" cy="200" rx="10" ry="16" fill="#7AACA0" transform="rotate(50 252 200)"/>
+  <path d="M90,208 Q108,200 126,208 Q144,216 162,208 Q180,200 198,208 Q216,216 234,208 Q252,200 270,208 Q288,216 306,208" fill="none" stroke="#7AB8D4" stroke-width="2.5"/>
+  <ellipse cx="200" cy="176" rx="10" ry="16" fill="#D4573A"/>
+  <polygon points="200,40 320,175 80,175" fill="none" stroke="#2D5A4A" stroke-width="3" stroke-linejoin="round"/>
+  <text x="200" y="248" text-anchor="middle" font-size="32" font-weight="700" fill="#2D5A4A" font-family="Georgia, serif" letter-spacing="4">VIVA VIETNAM</text>
+  <text x="200" y="272" text-anchor="middle" font-size="13" font-weight="400" fill="#5A8A78" font-family="Arial, sans-serif" letter-spacing="3">DISCOVER VIETNAM'S TRUE SPIRIT</text>
+</svg>
